@@ -1,0 +1,189 @@
+===
+function
+===
+fn f(): _ = _
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters)
+    (type
+     (wildcard)))
+   (expression
+    (wildcard)))))
+
+===
+struct
+===
+struct Pair { first: _, second: _ }
+---
+
+(source_file
+ (definition
+  (struct_definition
+   (upper_id)
+   (constructor_body
+    (struct_constructor_body
+     (struct_field_definition
+      (lower_id)
+      (type
+       (wildcard)))
+     (struct_field_definition
+      (lower_id)
+      (type
+       (wildcard))))))))
+
+===
+unit struct
+===
+struct Unit
+---
+
+(source_file
+ (definition
+  (struct_definition
+   (upper_id))))
+
+===
+tuple struct
+===
+struct Tuple(_, _, _)
+---
+
+(source_file
+ (definition
+  (struct_definition
+   (upper_id)
+   (constructor_body
+    (tuple_constructor_body
+     (type
+      (wildcard))
+     (type
+      (wildcard))
+     (type
+      (wildcard)))))))
+
+===
+enum
+===
+enum Option = None | Some(_)
+---
+
+(source_file
+ (definition
+  (enum_definition
+   (upper_id)
+   (constructor_definition
+    (upper_id))
+   (constructor_definition
+    (upper_id)
+    (constructor_body
+     (tuple_constructor_body
+      (type
+       (wildcard))))))))
+
+===
+alias
+===
+alias T = _
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (wildcard)))))
+
+===
+concept
+===
+concept C {
+    fn f(): _
+    fn g(_: _): _
+    alias A
+    alias B: X + Y + Z
+}
+---
+
+(source_file
+ (definition
+  (concept_definition
+   (upper_id)
+   (function_signature
+    (lower_id)
+    (function_parameters)
+    (type
+     (wildcard)))
+   (function_signature
+    (lower_id)
+    (function_parameters
+     (function_parameter
+      (pattern
+       (wildcard))
+      (type
+       (wildcard))))
+    (type
+     (wildcard)))
+   (type_signature
+    (upper_id))
+   (type_signature
+    (upper_id)
+    (concept_path
+     (path
+      (any_id)))
+    (concept_path
+     (path
+      (any_id)))
+    (concept_path
+     (path
+      (any_id)))))))
+
+===
+impl
+===
+impl _ {
+    fn f(_: _): _ = _
+}
+---
+
+(source_file
+ (definition
+  (impl_definition
+   (type
+    (wildcard))
+   (definition
+    (function_definition
+     (function_signature
+      (lower_id)
+      (function_parameters
+       (function_parameter
+        (pattern
+         (wildcard))
+        (type
+         (wildcard))))
+      (type
+       (wildcard)))
+     (expression
+      (wildcard)))))))
+
+===
+module
+===
+module m {
+    alias T = _
+}
+---
+
+(source_file
+ (definition
+  (module_definition
+   (lower_id)
+   (definition
+    (alias_definition
+     (upper_id)
+     (type
+      (wildcard)))))))
