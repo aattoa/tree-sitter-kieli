@@ -389,11 +389,6 @@
     }
   },
   {
-    "type": "string_component",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "string_literal",
     "named": true,
     "fields": {},
@@ -402,7 +397,7 @@
       "required": false,
       "types": [
         {
-          "type": "string_component",
+          "type": "string_escape",
           "named": true
         }
       ]
@@ -665,6 +660,10 @@
   {
     "type": "mut",
     "named": false
+  },
+  {
+    "type": "string_escape",
+    "named": true
   },
   {
     "type": "struct",

@@ -907,18 +907,9 @@
         }
       ]
     },
-    "string_component": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^\\\\]"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\\\."
-        }
-      ]
+    "string_escape": {
+      "type": "PATTERN",
+      "value": "\\\\."
     },
     "string_literal": {
       "type": "REPEAT1",
@@ -932,8 +923,17 @@
           {
             "type": "REPEAT",
             "content": {
-              "type": "SYMBOL",
-              "name": "string_component"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "string_escape"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "[^\\\\]"
+                }
+              ]
             }
           },
           {

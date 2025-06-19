@@ -14,7 +14,7 @@ const comma_separated = (element) =>
   separated(',', element)
 
 module.exports = grammar({
-  name: "kieli",
+  name: 'kieli',
 
   rules: {
     source_file: $ => repeat($.definition),
@@ -204,8 +204,8 @@ module.exports = grammar({
     float_literal: $ => /[0-9][a-zA-Z0-9']*\.[a-zA-Z0-9']*/,
     bool_literal: $ => choice('true', 'false'),
 
-    string_component: $ => choice(/[^\\]/, /\\./),
-    string_literal: $ => repeat1(seq('"', repeat($.string_component), '"')),
+    string_escape: $ => /\\./,
+    string_literal: $ => repeat1(seq('"', repeat(choice($.string_escape, /[^\\]/)), '"')),
 
     wildcard: $ => /_+/,
     lower_id: $ => /_*[a-z][a-zA-Z0-9_']*/,

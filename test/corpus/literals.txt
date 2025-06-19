@@ -131,9 +131,7 @@ fn f() = "hi"
     (lower_id)
     (function_parameters))
    (expression
-    (string_literal
-     (string_component)
-     (string_component))))))
+    (string_literal)))))
 
 ===
 string escapes
@@ -149,8 +147,5 @@ fn f() = "a\"b\nc"
     (function_parameters))
    (expression
     (string_literal
-     (string_component)
-     (string_component)
-     (string_component)
-     (string_component)
-     (string_component))))))
+     (string_escape)
+     (string_escape))))))
