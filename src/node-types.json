@@ -23,6 +23,11 @@
     }
   },
   {
+    "type": "bool_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "concept_definition",
     "named": true,
     "fields": {},
@@ -172,6 +177,22 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
         {
           "type": "wildcard",
           "named": true
@@ -329,6 +350,22 @@
       "required": true,
       "types": [
         {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "wildcard",
           "named": true
         }
@@ -346,6 +383,26 @@
       "types": [
         {
           "type": "definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string_component",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "string_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_component",
           "named": true
         }
       ]
@@ -526,6 +583,10 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -574,12 +635,24 @@
     "named": false
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "float_literal",
+    "named": true
+  },
+  {
     "type": "fn",
     "named": false
   },
   {
     "type": "impl",
     "named": false
+  },
+  {
+    "type": "int_literal",
+    "named": true
   },
   {
     "type": "lower_id",
@@ -595,6 +668,10 @@
   },
   {
     "type": "struct",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {

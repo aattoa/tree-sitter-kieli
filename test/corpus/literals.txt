@@ -1,0 +1,156 @@
+===
+boolean true
+===
+fn f() = true
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (bool_literal)))))
+
+===
+boolean false
+===
+fn f() = false
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (bool_literal)))))
+
+===
+integer zero
+===
+fn f() = 0
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (int_literal)))))
+
+===
+integer exponent
+===
+fn f() = 5e10
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (int_literal)))))
+
+===
+integer separators
+===
+fn f() = 1'000'000
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (int_literal)))))
+
+===
+floating zero
+===
+fn f() = 0.0
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (float_literal)))))
+
+===
+floating exponent
+===
+fn f() = 1.2e3
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (float_literal)))))
+
+===
+string empty
+===
+fn f() = ""
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (string_literal)))))
+
+===
+string hello
+===
+fn f() = "hi"
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (string_literal
+     (string_component)
+     (string_component))))))
+
+===
+string escapes
+===
+fn f() = "a\"b\nc"
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (expression
+    (string_literal
+     (string_component)
+     (string_component)
+     (string_component)
+     (string_component)
+     (string_component))))))

@@ -174,8 +174,22 @@ module.exports = grammar({
     ),
 
     type: $ => $.wildcard,
-    expression: $ => $.wildcard,
-    pattern: $ => $.wildcard,
+
+    expression: $ => choice(
+      $.wildcard,
+      $.int_literal,
+      $.float_literal,
+      $.bool_literal,
+      $.string_literal,
+    ),
+
+    pattern: $ => choice(
+      $.wildcard,
+      $.int_literal,
+      $.float_literal,
+      $.bool_literal,
+      $.string_literal,
+    ),
 
     mutability: $ => choice(
       'immut',
@@ -185,6 +199,13 @@ module.exports = grammar({
     concept_path: $ => $.path,
 
     path: $ => $.any_id,
+
+    int_literal: $ => /[0-9][a-zA-Z0-9']*/,
+    float_literal: $ => /[0-9][a-zA-Z0-9']*\.[a-zA-Z0-9']*/,
+    bool_literal: $ => choice('true', 'false'),
+
+    string_component: $ => choice(/[^\\]/, /\\./),
+    string_literal: $ => repeat1(seq('"', repeat($.string_component), '"')),
 
     wildcard: $ => /_+/,
     lower_id: $ => /_*[a-z][a-zA-Z0-9_']*/,
