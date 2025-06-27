@@ -175,14 +175,34 @@ module.exports = grammar({
       prec(1, $.wildcard),
     ),
 
-    type: $ => $.wildcard,
-
     expression: $ => choice(
       $.wildcard,
       $.int_literal,
       $.float_literal,
       $.bool_literal,
       $.string_literal,
+    ),
+
+    type_tuple: $ => seq('(', optional(comma_separated($.type)), ')'),
+    type_never: $ => '!',
+    type_array: $ => seq('[', $.type, optional(seq(';', $.expression)), ']'),
+    type_function: $ => seq('fn', '(', optional(comma_separated($.type)), ')', ':', $.type),
+    type_typeof: $ => seq('typeof', '(', $.expression, ')'),
+    type_impl: $ => seq('impl', separated('+', $.concept_path)),
+    type_reference: $ => seq('&', optional($.mutability), $.type),
+    type_pointer: $ => seq('*', optional($.mutability), $.type),
+
+    type: $ => choice(
+      $.wildcard,
+      $.path,
+      $.type_tuple,
+      $.type_never,
+      $.type_array,
+      $.type_function,
+      $.type_typeof,
+      $.type_impl,
+      $.type_reference,
+      $.type_pointer,
     ),
 
     pattern_name: $ => seq($.mutability, $.lower_id),

@@ -1,0 +1,261 @@
+===
+wildcard
+===
+alias T = _
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (wildcard)))))
+
+===
+path
+===
+alias T = Hello
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (path
+     (path_segment
+      (any_id)))))))
+
+===
+empty tuple
+===
+alias T = ()
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_tuple)))))
+
+===
+tuple
+===
+alias T = (A, B, C)
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_tuple
+     (type
+      (path
+       (path_segment
+        (any_id))))
+     (type
+      (path
+       (path_segment
+        (any_id))))
+     (type
+      (path
+       (path_segment
+        (any_id)))))))))
+
+===
+never
+===
+alias T = !
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_never)))))
+
+===
+slice
+===
+alias T = [T]
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_array
+     (type
+      (path
+       (path_segment
+        (any_id)))))))))
+
+===
+array
+===
+alias T = [T; 10]
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_array
+     (type
+      (path
+       (path_segment
+        (any_id))))
+     (expression
+      (int_literal)))))))
+
+===
+nullary function
+===
+alias T = fn(): _
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_function
+     (type
+      (wildcard)))))))
+
+===
+function
+===
+alias T = fn(A, B, C): _
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_function
+     (type
+      (path
+       (path_segment
+        (any_id))))
+     (type
+      (path
+       (path_segment
+        (any_id))))
+     (type
+      (path
+       (path_segment
+        (any_id))))
+     (type
+      (wildcard)))))))
+
+===
+typeof
+===
+alias T = typeof("hello")
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_typeof
+     (expression
+      (string_literal)))))))
+
+===
+impl
+===
+alias T = impl A + B[_] + C
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_impl
+     (concept_path
+      (path
+       (path_segment
+        (any_id))))
+     (concept_path
+      (path
+       (path_segment
+        (any_id)
+        (template_arguments
+         (template_argument
+          (wildcard))))))
+     (concept_path
+      (path
+       (path_segment
+        (any_id)))))))))
+
+===
+reference
+===
+alias T = &_
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_reference
+     (type
+      (wildcard)))))))
+
+===
+mutable reference
+===
+alias T = &mut _
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_reference
+     (mutability)
+     (type
+      (wildcard)))))))
+
+===
+pointer
+===
+alias T = *_
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_pointer
+     (type
+      (wildcard)))))))
+
+===
+mutable pointer
+===
+alias T = *mut _
+---
+
+(source_file
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (type_pointer
+     (mutability)
+     (type
+      (wildcard)))))))
