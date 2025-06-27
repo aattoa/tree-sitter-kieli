@@ -28,6 +28,16 @@
     "fields": {}
   },
   {
+    "type": "comment_line",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comment_multiline",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "concept_definition",
     "named": true,
     "fields": {},
@@ -837,11 +847,23 @@
     "named": false
   },
   {
+    "type": "*/",
+    "named": false
+  },
+  {
     "type": "+",
     "named": false
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "/*",
+    "named": false
+  },
+  {
+    "type": "//",
     "named": false
   },
   {

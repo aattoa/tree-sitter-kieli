@@ -16,6 +16,8 @@ const comma_separated = (element) =>
 module.exports = grammar({
   name: 'kieli',
 
+  extras: $ => [/\s+/, $.comment_line, $.comment_multiline],
+
   rules: {
     source_file: $ => repeat($.definition),
 
@@ -227,5 +229,8 @@ module.exports = grammar({
     lower_id: $ => /_*[a-z][a-zA-Z0-9_']*/,
     upper_id: $ => /_*[A-Z][a-zA-Z0-9_']*/,
     any_id: $ => /_*[a-zA-Z][a-zA-Z0-9_']*/,
+
+    comment_line: $ => seq('//', /[^\n]*/),
+    comment_multiline: $ => seq('/*', repeat(choice(/\*[^/]/, /[^\*]/)), '*/'),
   }
 });

@@ -1,0 +1,69 @@
+===
+line comment
+===
+fn a() = // hello world
+_
+// alias T = _
+---
+
+(source_file
+ (definition
+  (function_definition
+   (function_signature
+    (lower_id)
+    (function_parameters))
+   (comment_line)
+   (expression
+    (wildcard))))
+ (comment_line))
+
+===
+multiline comment
+===
+/*
+fn f() = _
+*/
+
+alias T = /* hello world */ _
+---
+
+(source_file
+ (comment_multiline)
+ (definition
+  (alias_definition
+   (upper_id)
+   (comment_multiline)
+   (type
+    (wildcard)))))
+
+===
+nested multiline comment
+===
+/*
+/*
+/*
+/*
+/*
+/*
+hello world
+*/
+*/
+*/
+*/
+*/
+*/
+alias T = _
+---
+
+(source_file
+ (comment_multiline
+  (comment_multiline
+   (comment_multiline
+    (comment_multiline
+     (comment_multiline
+      (comment_multiline))))))
+ (definition
+  (alias_definition
+   (upper_id)
+   (type
+    (wildcard)))))
