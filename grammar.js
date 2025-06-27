@@ -183,12 +183,27 @@ module.exports = grammar({
       $.string_literal,
     ),
 
+    pattern_name: $ => seq($.mutability, $.lower_id),
+    pattern_tuple: $ => seq('(', optional(comma_separated($.pattern)), ')'),
+    pattern_slice: $ => seq('[', optional(comma_separated($.pattern)), ']'),
+    pattern_guarded: $ => seq($.pattern, 'if', $.expression),
+    pattern_path_tuple: $ => seq('(', optional(comma_separated($.pattern)), ')'),
+    pattern_path_field: $ => seq($.lower_id, optional(seq('=', $.pattern))),
+    pattern_path_struct: $ => seq('{', comma_separated($.pattern_path_field), '}'),
+    pattern_path_body: $ => choice($.pattern_path_tuple, $.pattern_path_struct),
+    pattern_path: $ => seq($.path, optional($.pattern_path_body)),
+
     pattern: $ => choice(
       $.wildcard,
       $.int_literal,
       $.float_literal,
       $.bool_literal,
       $.string_literal,
+      $.pattern_tuple,
+      $.pattern_slice,
+      $.pattern_guarded,
+      $.pattern_name,
+      $.pattern_path,
     ),
 
     mutability: $ => choice(
@@ -198,14 +213,15 @@ module.exports = grammar({
 
     concept_path: $ => $.path,
 
-    path: $ => $.any_id,
+    path_segment: $ => seq($.any_id, optional($.template_arguments)),
+    path: $ => separated('::', $.path_segment),
+
+    string_escape: $ => /\\./,
+    string_literal: $ => repeat1(seq('"', repeat(choice($.string_escape, /[^\\]/)), '"')),
 
     int_literal: $ => /[0-9][a-zA-Z0-9']*/,
     float_literal: $ => /[0-9][a-zA-Z0-9']*\.[a-zA-Z0-9']*/,
     bool_literal: $ => choice('true', 'false'),
-
-    string_escape: $ => /\\./,
-    string_literal: $ => repeat1(seq('"', repeat(choice($.string_escape, /[^\\]/)), '"')),
 
     wildcard: $ => /_+/,
     lower_id: $ => /_*[a-z][a-zA-Z0-9_']*/,

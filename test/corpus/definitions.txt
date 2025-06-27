@@ -134,13 +134,16 @@ concept C {
     (upper_id)
     (concept_path
      (path
-      (any_id)))
+      (path_segment
+        (any_id))))
     (concept_path
      (path
-      (any_id)))
+      (path_segment
+        (any_id))))
     (concept_path
      (path
-      (any_id)))))))
+      (path_segment
+        (any_id))))))))
 
 ===
 impl
